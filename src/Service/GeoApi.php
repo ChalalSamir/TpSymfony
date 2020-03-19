@@ -47,10 +47,6 @@ class GeoApi
         return [
             'nom' => $result[0]->nom,
             'code' => $result[0]->code,
-            'codeDepartement' => $result[0]->codeDepartement,
-            'codeRegion' => $result[0]->codeRegion,
-            'codesPostaux' => $result[0]->codesPostaux,
-            'population' => $result[0]->population,
         ];
     }
 }

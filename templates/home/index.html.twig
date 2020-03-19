@@ -26,24 +26,25 @@
         {% if commune is not empty %}
             {% if etablissements is not empty %}
                 <h2>Établissements trouvés :</h2>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Adresse</th>
-                        <th>Téléphone</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div>
                     {% for etablissement in etablissements %}
-                        <tr>
-                            <td>{{ etablissement.properties.nom }}</td>
-                            <td>{{ etablissement.properties.adresses[0].lignes[0] }}</td>
-                            <td>{{ etablissement.properties.telephone }}</td>
-                        </tr>
+                        <div class="container__etablissement">
+                            <div>
+                                <span>Nom : </span>
+                                <p> {{ etablissement.properties.nom }}</p>
+                            </div>
+
+                            <div>
+                                <span>Adresse : </span>
+                                <p>{{ etablissement.properties.adresses[0].lignes[0] }}</p>
+                            </div>
+                            <div>
+                                <span>Téléphone : </span>
+                                <p>{{ etablissement.properties.telephone }}</p>
+                            </div>
+                        </div>
                     {% endfor %}
-                    </tbody>
-                </table>
+                </div>
             {% else %}
                 <div class="alert alert-warning">Aucun etablissement</div>
             {% endif %}
@@ -61,7 +62,27 @@
     </div>
 
 
+    <style>
+        .container__etablissement {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
 
+        .container__etablissement div {
+            width: 33%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            align-items: center;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+    </style>
 
 
 {% endblock %}
