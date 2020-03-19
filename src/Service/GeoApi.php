@@ -8,15 +8,15 @@ class GeoApi
 {
     protected $url = 'https://geo.api.gouv.fr/';
 
-    public function getCommuneBy(array $params) : array
+    public function getCommuneBy(array $api) : array
     {
         $args = '';
-        for($i = 0; $i < sizeof($params); $i++){
-            if(!empty($params[$i][1])){
+        for($i = 0; $i < sizeof($api); $i++){
+            if(!empty($api[$i][1])){
                 if(empty($args)){
-                    $args = '?' . $params[$i][0] . '=' . $params[$i][1];
+                    $args = '?' . $api[$i][0] . '=' . $api[$i][1];
                 }else{
-                    $args = $args . '&' . $params[$i][0] . '=' . $params[$i][1];
+                    $args = $args . '&' . $api[$i][0] . '=' . $api[$i][1];
                 }
             }
         }

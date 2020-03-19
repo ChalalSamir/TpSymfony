@@ -3,6 +3,7 @@
 {% block title %}TpSymfony{% endblock %}
 
 {% block body %}
+    <div class="container mt-5">
         <h1 class="h1">Rechercher une ville ainsi qu'un établisemment</h1>
 
         <p class="my-5">les champs marqués d'un astérisque (*) sont obligatoires</p>
@@ -21,30 +22,30 @@
             <input type="submit" class="btn btn-success my-2" value="Recherche">
         </form>
 
-            {% if etablissements is not empty %}
-                <h2>Établissements trouvés :</h2>
-                <div>
-                    {% for etablissement in etablissements %}
-                        <div class="container__etablissement">
-                            <div>
-                                <span>Nom : </span>
-                                <p> {{ etablissement.properties.nom }}</p>
-                            </div>
-
-                            <div>
-                                <span>Adresse : </span>
-                                <p>{{ etablissement.properties.adresses[0].lignes[0] }}</p>
-                            </div>
-                            <div>
-                                <span>Téléphone : </span>
-                                <p>{{ etablissement.properties.telephone }}</p>
-                            </div>
+        {% if etablissements is not empty %}
+            <h2>Établissements trouvés :</h2>
+            <div>
+                {% for etablissement in etablissements %}
+                    <div class="container__etablissement">
+                        <div>
+                            <span>Nom : </span>
+                            <p> {{ etablissement.properties.nom }}</p>
                         </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="alert alert-warning">Aucun etablissement</div>
-            {% endif %}
+
+                        <div>
+                            <span>Adresse : </span>
+                            <p>{{ etablissement.properties.adresses[0].lignes[0] }}</p>
+                        </div>
+                        <div>
+                            <span>Téléphone : </span>
+                            <p>{{ etablissement.properties.telephone }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning">Aucun etablissement</div>
+        {% endif %}
 
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -53,7 +54,7 @@
                 </div>
             {% endfor %}
         {% endfor %}
-
+    </div>
 
 
     <style>
