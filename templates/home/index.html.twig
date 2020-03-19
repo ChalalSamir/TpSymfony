@@ -22,7 +22,7 @@
             <input type="submit" class="btn btn-success my-2" value="Recherche">
         </form>
 
-        {% if etablissements is not empty %}
+        {% if etablissements is define %}
             <h2>Établissements trouvés :</h2>
             <div>
                 {% for etablissement in etablissements %}
