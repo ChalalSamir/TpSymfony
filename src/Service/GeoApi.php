@@ -10,20 +10,20 @@ class GeoApi
 
     public function getCommuneBy(array $params) : array
     {
-        $datas = '';
+        $args = '';
         for($i = 0; $i < sizeof($params); $i++){
             if(!empty($params[$i][1])){
-                if(empty($datas)){
-                    $datas = '?' . $params[$i][0] . '=' . $params[$i][1];
+                if(empty($args)){
+                    $args = '?' . $params[$i][0] . '=' . $params[$i][1];
                 }else{
-                    $datas = $datas . '&' . $params[$i][0] . '=' . $params[$i][1];
+                    $args = $args . '&' . $params[$i][0] . '=' . $params[$i][1];
                 }
             }
         }
 
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, $this->url . 'communes' . $datas);
+        curl_setopt($curl, CURLOPT_URL, $this->url . 'communes' . $args);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
 

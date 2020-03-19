@@ -3,8 +3,6 @@
 {% block title %}TpSymfony{% endblock %}
 
 {% block body %}
-    <div class="container my-5">
-
         <h1 class="h1">Rechercher une ville ainsi qu'un établisemment</h1>
 
         <p class="my-5">les champs marqués d'un astérisque (*) sont obligatoires</p>
@@ -23,7 +21,6 @@
             <input type="submit" class="btn btn-success my-2" value="Recherche">
         </form>
 
-        {% if commune is not empty %}
             {% if etablissements is not empty %}
                 <h2>Établissements trouvés :</h2>
                 <div>
@@ -48,7 +45,6 @@
             {% else %}
                 <div class="alert alert-warning">Aucun etablissement</div>
             {% endif %}
-        {% endif %}
 
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -58,8 +54,6 @@
             {% endfor %}
         {% endfor %}
 
-
-    </div>
 
 
     <style>
