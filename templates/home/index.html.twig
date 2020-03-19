@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+
+        <h1 class="h1">Rechercher une ville ainsi qu'un établisemment</h1>
+
+        <p class="my-5">les champs marqués d'un astérisque (*) sont obligatoires</p>
+
+        <form method="post" class=" p-4 my-5">
+            <div class="form-group">
+                <label for="city">Nom d'une ville (*)</label>
+                <input type="text" name="city" class="form-control" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="postal">Code postal (*)</label>
+                <input type="text" name="postal" class="form-control" minlength="5" maxlength="5" required>
+            </div>
+
+            <input type="submit" class="btn btn-success my-2" value="Recherche">
+        </form>
+
+        {% if commune is not empty %}
+            {% if etablissements is not empty %}
+                <h2>Établissements trouvés :</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Téléphone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for etablissement in etablissements %}
+                        <tr>
+                            <td>{{ etablissement.properties.nom }}</td>
+                            <td>{{ etablissement.properties.adresses[0].lignes[0] }}</td>
+                            <td>{{ etablissement.properties.telephone }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert alert-warning">Aucun etablissement trouvé dans cette commune</div>
+            {% endif %}
+        {% endif %}
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+
+    </div>
+
+
+
+
+
+{% endblock %}
