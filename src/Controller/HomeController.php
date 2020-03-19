@@ -32,7 +32,7 @@ class HomeController extends AbstractController
                         'crous'
                     ]);
                 }else{
-                    $this->addFlash('danger', 'Aucune ville ne correspond à votre recherchez');
+                    $this->addFlash('danger', 'Aucune ville ne correspond à votre recherche');
                 }
             }else{
                 $this->addFlash('danger', 'Veuillez remplir tous les champs !');
@@ -41,8 +41,8 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'etablissements' => $etablissements ?? [],
-            'commune' => $commune ?? [],
+            'etablissements' => $etablissements ?? 'none',
+            'commune' => $commune ?? 'none',
         ]);
     }
 }
